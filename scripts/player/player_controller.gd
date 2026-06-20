@@ -19,9 +19,9 @@ func _physics_process(delta: float) -> void:
 	var input_z = 0.0
 	
 	if Input.is_key_pressed(KEY_W):
-		input_z -= 1.0
-	if Input.is_key_pressed(KEY_S):
 		input_z += 1.0
+	if Input.is_key_pressed(KEY_S):
+		input_z -= 1.0
 	if Input.is_key_pressed(KEY_A):
 		input_x -= 1.0
 	if Input.is_key_pressed(KEY_D):
@@ -31,7 +31,11 @@ func _physics_process(delta: float) -> void:
 	is_sprinting = Input.is_key_pressed(KEY_SHIFT)
 	
 	var target_speed = sprint_speed if is_sprinting else move_speed
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	var player_angle = rotation.y
+	var forward = Vector3(-sin(player_angle), 0, -cos(player_angle))
+	var right = Vector3(cos(player_angle), 0, -sin(player_angle))
+	var direction = (forward * input_dir.y + right * input_dir.x).normalized()
 	
 	if direction.length() > 0:
 		velocity.x = lerp(velocity.x, direction.x * target_speed, acceleration * delta)
