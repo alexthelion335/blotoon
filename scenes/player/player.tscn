@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8rrwt0y4vhcq"]
+
+[ext_resource type="Script" path="res://scripts/player/player_controller.gd"]
+[ext_resource type="Script" path="res://scripts/player/camera_controller.gd"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("uid://c8rrwt0y4vhcq")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+script = ExtResource("uid://c8rrwt0y4vhcq")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -2, 0)
