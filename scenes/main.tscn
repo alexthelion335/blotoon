@@ -1,7 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://main_scene"]
+[gd_scene format=3 uid="uid://cxtks6xmlpcs1"]
 
-[ext_resource type="PackedScene" uid="uid://player_scene" path="res://scenes/player/player.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1"]
 
-[node name="Main" type="Node3D"]
+[sub_resource type="BoxMesh" id="1"]
+size = Vector3(100, 1, 100)
 
-[node name="Player" parent="." instance=ExtResource("1")]
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(100, 1, 100)
+
+[node name="Main" type="Node3D" unique_id=1725721908]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2000083715]
+transform = Transform3D(0.7071069, 0.49999982, -0.49999997, 0, 0.7071069, 0.70710665, 0.70710665, -0.49999997, 0.5000002, 5, 10, 5)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1153888954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("1")
+
+[node name="FloorCollision" type="StaticBody3D" parent="Floor" unique_id=1140779485]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FloorCollision" unique_id=864057740]
+shape = SubResource("2")
+
+[node name="Player" parent="." unique_id=453325994 instance=ExtResource("1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
