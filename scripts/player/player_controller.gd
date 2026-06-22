@@ -4,8 +4,8 @@ extends CharacterBody3D
 @export var sprint_speed: float = 12.0
 @export var acceleration: float = 25.0
 @export var friction: float = 20.0
-@export var jump_force: float = 8.0
-@export var gravity: float = 9.8
+@export var jump_force: float = 5.5
+@export var gravity: float = 12.0
 
 var is_sprinting: bool = false
 var camera_controller: Node3D
@@ -32,9 +32,9 @@ func _physics_process(delta: float) -> void:
 	
 	var target_speed = sprint_speed if is_sprinting else move_speed
 	
-	var player_angle = rotation.y
-	var forward = Vector3(-sin(player_angle), 0, -cos(player_angle))
-	var right = Vector3(cos(player_angle), 0, -sin(player_angle))
+	var angle = rotation.y
+	var forward = Vector3(sin(angle), 0, -cos(angle))
+	var right = Vector3(cos(angle), 0, sin(angle))
 	var direction = (forward * input_dir.y + right * input_dir.x).normalized()
 	
 	if direction.length() > 0:
