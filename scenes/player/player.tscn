@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/player/camera_controller.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/player/weapon.tscn" id="3"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.4
@@ -26,3 +27,5 @@ script = ExtResource("2")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, -2, 0)
+
+[node name="Weapon" parent="." instance=ExtResource("3")]

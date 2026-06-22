@@ -9,9 +9,11 @@ extends CharacterBody3D
 
 var is_sprinting: bool = false
 var camera_controller: Node3D
+var weapon: Node3D
 
 func _ready() -> void:
 	camera_controller = $Camera3D
+	weapon = $Weapon
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta: float) -> void:
@@ -51,6 +53,10 @@ func _physics_process(delta: float) -> void:
 			velocity.y = 0.0
 	else:
 		velocity.y -= gravity * delta
+	
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if weapon:
+			weapon.fire()
 	
 	move_and_slide()
 
