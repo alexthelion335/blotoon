@@ -36,7 +36,7 @@ blotoon/
 ## Features Roadmap
 
 - [x] Project structure
-- [ ] Player movement & camera system
+- [x] Player movement & camera system
 - [ ] Ink painting system
 - [ ] Weapon mechanics
 - [ ] Map creation
